@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: ./app
+    restart: unless-stopped
+    volumes:
+      - ./app:/app:ro
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000","--reload"]
+
+  translator:
+    build:
+      context: ./translator
+    restart: unless-stopped
+    # ports:
+    #   - 3000:3000
+
+  mongo:
+    image: mongo:4.4
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=workflow
+    ports:
+      - 27017:27017

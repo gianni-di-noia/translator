@@ -1,0 +1,10 @@
+{
+    "name": "translate-microservice",
+    "version": "1.0.0",
+    "description": "Translate microservice",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.17.1",
+        "google-translate-extended-api": "latest"
+    }
+}
